@@ -8,20 +8,25 @@ import './NavBar.css'
 const NavBar = () => {
   return (
     <nav className='navigation'>
-      <ul>
+      <div>
+        Logo goes here
+      </div>
+      <ul className='nav-links'>
         <li>
           <NavLink to='/' exact={true} activeClassName='active'>
             Home
           </NavLink>
         </li>
         <li>
-          Hello
-        </li>
-        {/* <li>
-          <NavLink to='/users' exact={true} activeClassName='active'>
-            Users
+          <NavLink to='/create_post' exact={true} activeClassName='active'>
+            +
           </NavLink>
-        </li> */}
+        </li>
+        <li>
+          <NavLink to='/like' exact={true} activeClassName='active'>
+            Likes
+          </NavLink>
+        </li>
         <li>
           <LogoutButton />
         </li>

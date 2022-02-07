@@ -1,0 +1,14 @@
+.navigation{
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-links{
+    display: flex;
+    list-style: none;
+    max-width: 80%;
+}
+
+.nav-links li{
+    margin: 10px;
+}

@@ -14,6 +14,9 @@ const NavBar = () => {
             Home
           </NavLink>
         </li>
+        <li>
+          Hello
+        </li>
         {/* <li>
           <NavLink to='/users' exact={true} activeClassName='active'>
             Users

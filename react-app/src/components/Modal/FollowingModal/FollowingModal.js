@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { getAllPost } from "../../../store/post";
 import RenderFollowUser from "../RenderUser/RenderFollowUser";
+import './FollowingList.css';
 
 function FollowingModal({prop}) {
     const dispatch = useDispatch();
@@ -23,7 +24,7 @@ function FollowingModal({prop}) {
     return (
         <>
             {prop?.map(user =>
-                <div className="following-list" key={user.id}>
+                <div className="list-of-likes" key={user.id}>
                     <RenderFollowUser prop={{"id": prop.u_id, "user": user}}  />
                 </div>
             )}

@@ -23,7 +23,7 @@ function FollowerModal({prop}) {
     return (
         <>
             {prop.map(user =>
-                <div className="followers-list" key={user.id}>
+                <div className="list-of-likes" key={user.id}>
                     <RenderFollowUser prop={{"id": user.id, "user": user}}  />
                 </div>
             )}

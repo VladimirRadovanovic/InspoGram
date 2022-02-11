@@ -1,11 +1,12 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-import LogoutButton from "../Auth/LogoutButton";
+// import LogoutButton from "../Auth/LogoutButton";
 import CreatePostModal from "../Post/CreatePost";
 import "./NavBar.css";
 import logo from "../../images/Inspogram.jpg";
-import cat from "../../images/cat.jpg";
+// import cat from "../../images/cat.jpg";
+import ProfileButton from "./ProfileButton";
 
 const NavBar = ({ user }) => {
   return (
@@ -27,10 +28,11 @@ const NavBar = ({ user }) => {
             <CreatePostModal />
             <i className="fa-regular fa-compass"></i>
             <i className="fa-regular fa-heart"></i>
-            <NavLink to={`/users/${user.id}`} activeClassName="active">
+            {/* <NavLink to={`/users/${user.id}`} activeClassName="active">
               <img className="profile-pic-nav" src={cat} alt="cat" />
-            </NavLink>
-            <LogoutButton />
+            </NavLink> */}
+            {/* <LogoutButton /> */}
+            <ProfileButton user={user} />
           </div>
         </div>
       </div>

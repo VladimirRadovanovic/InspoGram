@@ -8,7 +8,7 @@ import './FollowingList.css';
 function FollowingModal({prop}) {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
-
+    
     useEffect(() => {
         const payload = {
             user_id: sessionUser?.id

@@ -24,20 +24,23 @@ function ProfileButton({ user }) {
   }, [showMenu]);
 
   return (
-    <>
+    <div className="profile-btn-container">
       <img className="profile-pic-nav" src={cat} alt="cat" onClick={openMenu} />
       {showMenu && (
-        <div
-          className="profile-pic-dropdown"
-          style={showMenu ? { transform: "translateY(10%)" } : {}}
-        >
-          <NavLink to={`/users/${user.id}`} activeClassName="active">
-            <i className="fas fa-user-circle"></i>
-          </NavLink>
-          <LogoutButton />
+        <div className="profile-pic-dropdown">
+          <div className="profile">
+            <NavLink to={`/users/${user.id}`} activeClassName="active">
+              <button>
+                <i class="fa-regular fa-user"></i>Profile
+              </button>
+            </NavLink>
+          </div>
+          <div className="logout">
+            <LogoutButton />
+          </div>
         </div>
       )}
-    </>
+    </div>
   );
 }
 

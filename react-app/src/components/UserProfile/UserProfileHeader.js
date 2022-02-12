@@ -9,6 +9,7 @@ import FollowingModal from "../Modal/FollowingModal/FollowingModal";
 import { LikeModal } from "../../context/Modal";
 import cameraIcon from '../../images/camera.svg'
 import uploadIcon from '../../images/upload.svg'
+import cat from '../../images/cat.jpg'
 
 
 
@@ -85,7 +86,7 @@ function UserProfileHeader({ postsList, user }) {
                 {/* <div className="profile-pic"> */}
                 {photoPrev !== '#' ?
                     <img className={`${photoClass} profile-pic-pre profile-pic`} id='photo-upload-img' src={photoPrev} alt='your photo' />
-                    : <img className='profile-pic' src={userId === '1' ? sessionUser.profile_image_url : user.profile_image_url} alt='your photo' />}
+                    : <img className='profile-pic' src={Number(userId) === sessionUser?.id ? (sessionUser?.profile_image_url ? sessionUser?.profile_image_url : cat) : (user?.profile_image_url ? user?.profile_image_url : cat)} alt='your photo' />}
                 {/* <button onClick={handleUploadPhoto}>Upload profile photo</button> */}
                 {sessionUser.id === Number(userId) && (
                     <div className='save-upload-container'>

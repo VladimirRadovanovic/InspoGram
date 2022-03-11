@@ -210,8 +210,8 @@ export const unfollowAUser = (id) => async (dispatch) => {
 
 const postReducer = (state = {}, action) => {
     let newState = {}
-    //let newPosts = []
-    //let newComments = []
+    let newPosts = []
+    let newComments = []
     //let objId;
     switch (action.type) {
         case GET_POST:
@@ -233,17 +233,17 @@ const postReducer = (state = {}, action) => {
             return newState
         case ADD_COMMENT:
             newState = { ...state }
-            let newPosts = [ ...newState.posts ]
+            newPosts = [ ...newState.posts ]
             for(let i=0; i<newPosts.length; i++){
                 if (newPosts[i].id  === action.comment.post_id){
-                    let newComments = [ ... newPosts[i].comments ]
-                    newComments.push( action.comment)
+                    newComments = [ ...newPosts[i].comments, action.comment ]
                     newPosts[i].comments = newComments
+                    newState.posts = newPosts
                     return newState;
                 }
             }
 
-            //newState.posts = newPosts
+            
             return newState;
         case ADD_LIKE:
             newState = { ...state }

@@ -8,7 +8,7 @@ import { ProfileModal } from '../../context/Modal';
 import PostDetails from '../Post/PostDetails/PostDetailsInModal';
 import "./AddComment.css";
 
-function FeedCommentForm(id) {
+function FeedCommentForm({id}) {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
     const posts = useSelector(state => state.post.posts);
@@ -20,7 +20,8 @@ function FeedCommentForm(id) {
     const [lastComment, setLastComment] = useState("");
     const [commentCount, setCommentCount] = useState(0);
 
-    let post = posts.filter(e => e.id === id.id);
+    let post = posts.filter(e => e.id === id);
+    
     useEffect(() => {
         post[0]?.comments[post[0]?.comments.length - 1] ? setLastComment(post[0]?.comments[post[0]?.comments.length - 1].comment) : setLastComment("");
         post[0]?.comments[post[0]?.comments.length - 1] ? setLastUser(post[0]?.comments[post[0]?.comments.length - 1]?.user.username) : setLastUser("");
@@ -55,16 +56,16 @@ function FeedCommentForm(id) {
 
         const payload = {
             comment,
-            post_id: id.id,
+            post_id: id,
             user_id: sessionUser?.id
         }
 
         dispatch(createComment(payload))
-        dispatch(getAllPost(payload));
-        setLastUser(sessionUser?.username);
-        setLastUserId(sessionUser?.id);
-        setLastComment(payload.comment);
-        setCommentCount(commentCount + 1);
+        // dispatch(getAllPost(payload));
+        // setLastUser(sessionUser?.username);
+        // setLastUserId(sessionUser?.id);
+        // setLastComment(payload.comment);
+        // setCommentCount(commentCount + 1);
         setComment("");
     }
 

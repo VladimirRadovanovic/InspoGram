@@ -7,7 +7,7 @@ const GET_SINGLE_POST = 'post/GET_SINGLE_POST';
 
 const ADD_POST = 'post/ADD_POST';
 const ADD_LIKE = 'post/likes/ADD_LIKE';
-const ADD_COMMENT = 'post/CREATE_POST';
+const ADD_COMMENT = 'post/CREATE_COMMENT';
 const FOLLOW_USER = 'user/FOLLOW_USER';
 
 const DELETE_LIKE = 'post/likes/DELETE_LIKE';
@@ -210,6 +210,9 @@ export const unfollowAUser = (id) => async (dispatch) => {
 
 const postReducer = (state = {}, action) => {
     let newState = {}
+    //let newPosts = []
+    //let newComments = []
+    //let objId;
     switch (action.type) {
         case GET_POST:
             const allPosts = []
@@ -229,14 +232,19 @@ const postReducer = (state = {}, action) => {
             newState = { ...state, [action.post.id]: action.post }
             return newState
         case ADD_COMMENT:
-            const newObj = { ...state }
-            for (let obj of newObj.posts) {
-                if (obj.id === action.comment.post_id) {
-                    obj.comments.push(action.comment)
-                    return newObj
+            newState = { ...state }
+            let newPosts = [ ...newState.posts ]
+            for(let i=0; i<newPosts.length; i++){
+                if (newPosts[i].id  === action.comment.post_id){
+                    let newComments = [ ... newPosts[i].comments ]
+                    newComments.push( action.comment)
+                    newPosts[i].comments = newComments
+                    return newState;
                 }
             }
-            return newObj
+
+            //newState.posts = newPosts
+            return newState;
         case ADD_LIKE:
             newState = { ...state }
             for (let post of newState.posts) {

@@ -3,7 +3,9 @@
     justify-content: space-between;
     width: 92%;
     margin: .5rem;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
+    /* overflow: hidden; */
+
 }
 
 .user-prof-pic{
@@ -22,6 +24,7 @@
     border: none;
     width: 6.2rem;
     height: 2rem;
+    overflow: hidden;
 }
 
 .following-btn{

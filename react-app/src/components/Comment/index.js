@@ -14,8 +14,10 @@ function CommentModal({ comment }) {
   const user = useSelector((state) => state.session.user);
 
   useEffect( () => {
-    dispatch(getAllPost({"user_id": user.id}))
-  },[dispatch, showModal])
+    if (user) {
+      dispatch(getAllPost({"user_id": user.id}))
+    }
+  },[dispatch, showModal, user])
 
   const onCloseMenuModal = () => {
     setShowModal(false);

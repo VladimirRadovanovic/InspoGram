@@ -99,11 +99,12 @@ export const createPost = (formData) => async(dispatch) => {
         method: 'POST',
         body: formData
     })
-
+    console.log(response, 'response!!!!!!!!!!!!!!!!!!!!!')
     if (response.ok) {
         const data = await response.json()
-        dispatch(addPost(data))
-        dispatch(addUserPost(data))
+        console.log(data, 'data from post create')
+        dispatch(addPost(data.post))
+        dispatch(addUserPost(data.post))
         return null
     } else if (response.status < 500) {
         const data = await response.json();

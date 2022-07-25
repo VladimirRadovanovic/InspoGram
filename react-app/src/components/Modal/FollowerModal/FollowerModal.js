@@ -14,7 +14,10 @@ function FollowerModal({prop}) {
         const payload = {
             user_id: sessionUser?.id
         }
-        dispatch(getAllPost(payload));
+        if (sessionUser) {
+
+            dispatch(getAllPost(payload));
+        }
     }, [dispatch, sessionUser])
 
     return (

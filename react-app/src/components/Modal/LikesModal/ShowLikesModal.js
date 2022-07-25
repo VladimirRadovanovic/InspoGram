@@ -14,7 +14,10 @@ function ShowLikesModal({post}) {
         const payload = {
             id: sessionUser?.id
         }
-        dispatch(getAllPost(payload));
+        if (sessionUser) {
+
+            dispatch(getAllPost(payload));
+        }
     }, [dispatch, sessionUser])
 
     return (

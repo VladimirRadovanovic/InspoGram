@@ -36,13 +36,15 @@ const CreatePostForm = ({onClose}) => {
 
         // const payload = { caption, photo }
 
-        const data = dispatch(createPost(formData))
+        const data =  await dispatch(createPost(formData))
+        console.log(data, 'error data^^^^^^^^^^^^^^^^^^')
 
         if (data) {
             setImageLoading(false);
-            onClose()
-        } else {
+            // onClose()
             setErrors(data)
+            // history.push('/users/')
+        } else {
             setImageLoading(false)
             setPhotoPrev('#')
             onClose()

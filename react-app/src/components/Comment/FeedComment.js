@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react'; 
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -32,8 +32,10 @@ function FeedCommentForm(id) {
         const payload = {
             user_id: sessionUser?.id
         }
-        dispatch(getAllPost(payload));
-        dispatch(getLikesByUser(payload));
+        if (sessionUser) {
+            dispatch(getAllPost(payload));
+            dispatch(getLikesByUser(payload));
+        }
     }, [dispatch, sessionUser, lastComment, showModal]);
 
 

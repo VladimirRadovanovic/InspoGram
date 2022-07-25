@@ -17,8 +17,11 @@ function FeedPage() {
         const payload = {
             user_id: sessionUser?.id
         }
+        if (sessionUser) {
+            dispatch(getAllPost(payload));
 
-        dispatch(getAllPost(payload));
+        }
+
     }, [dispatch, sessionUser])
 
     if (!sessionUser) return <Redirect to="/login" />;

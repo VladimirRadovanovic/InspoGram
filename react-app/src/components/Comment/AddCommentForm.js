@@ -19,15 +19,17 @@ function AddCommentForm({ id, flag }) {
     } else {
       setDisabled(true);
     }
-    
+
     const payload = {
       comment,
       post_id: id,
       user_id: sessionUser?.id,
     };
+    if (sessionUser) {
 
-    dispatch(getAllPost(payload));
-  }, [dispatch, disabled, comment]);
+      dispatch(getAllPost(payload));
+    }
+  }, [dispatch, disabled, comment, sessionUser]);
 
   if (!sessionUser) return <Redirect to="/" />;
 

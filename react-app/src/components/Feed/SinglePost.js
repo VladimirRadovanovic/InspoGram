@@ -37,8 +37,11 @@ const SinglePost = (id) => {
       user_id: sessionUser?.id,
     };
     // dispatch(getUserPosts(payload.id))
-    dispatch(getAllPost(payload));
-    dispatch(getLikesByUser(payload));
+    if (sessionUser) {
+
+      dispatch(getAllPost(payload));
+      dispatch(getLikesByUser(payload));
+    }
   }, [dispatch, sessionUser]);
 
   useEffect(() => {

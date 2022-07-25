@@ -24,8 +24,13 @@ function PostProfileLikes({ post }) {
         const payload = {
             user_id: sessionUser?.id
         }
-        dispatch(getAllPost(payload));
-        dispatch(getLikesByUser(payload))
+
+        if (sessionUser) {
+
+            dispatch(getAllPost(payload));
+            dispatch(getLikesByUser(payload))
+
+        }
     }, [dispatch, sessionUser])
 
     useEffect(() => {

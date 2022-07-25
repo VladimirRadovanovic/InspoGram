@@ -73,9 +73,9 @@ def create_post():
 
         image.filename = get_unique_filename(image.filename)
 
-        print(image.filename, 'image****************')
+        print(image.filename, 'image****************'*50)
         upload = upload_file_to_s3(image)
-        print(upload, 'upload****************')
+        print(upload, 'upload****************'*50)
 
         if "url" not in upload:
             # if the dictionary doesn't have a filename key
@@ -88,8 +88,8 @@ def create_post():
         new_image = Photo(post_id=new_post.id, photo=url)#post id instead of user
         db.session.add(new_image)
         db.session.commit()
-
-        return new_post.to_dict()
+        # print(new_post.to_dict(), 'post'*70)
+        return {'post': new_post.to_dict()}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 # create comment on a post

@@ -5,7 +5,7 @@ import { getAllPost } from "../../../store/post";
 import RenderFollowUser from "../RenderUser/RenderFollowUser";
 import './FollowingList.css';
 
-function FollowingModal({prop}) {
+function FollowingModal({setShowFollwingModal, prop}) {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
 
@@ -23,7 +23,7 @@ function FollowingModal({prop}) {
         <>
             {prop?.map(user =>
                 <div className="list-of-likes" key={user.id}>
-                    <RenderFollowUser prop={{"id": prop.u_id, "user": user}}  />
+                    <RenderFollowUser setShowFollwingModal={setShowFollwingModal} prop={{"id": prop.u_id, "user": user}}  />
                 </div>
             )}
         </>

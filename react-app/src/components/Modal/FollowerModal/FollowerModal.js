@@ -6,7 +6,7 @@ import RenderFollowUser from "../RenderUser/RenderFollowUser";
 
 import '../LikesModal/LikeModal.css';
 
-function FollowerModal({prop}) {
+function FollowerModal({prop, setShowFollwerModal}) {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
 
@@ -24,7 +24,7 @@ function FollowerModal({prop}) {
         <>
             {prop.map(user =>
                 <div className="list-of-likes" key={user.id}>
-                    <RenderFollowUser prop={{"id": user.id, "user": user}}  />
+                    <RenderFollowUser setShowFollwerModal={setShowFollwerModal} prop={{"id": user.id, "user": user}}  />
                 </div>
             )}
         </>

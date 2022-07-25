@@ -23,7 +23,8 @@
     position: absolute;
     background-color:white;
     width: 450px;
-    height: 300px;
+    min-height: 400px;
+    height: fit-content;
     border-radius: 6px;
     display: flex;
     flex-direction: column;

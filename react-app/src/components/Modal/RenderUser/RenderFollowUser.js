@@ -1,17 +1,27 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+
 
 import { followAUser, getAllPost, getLikesByUser, unfollowAUser } from "../../../store/post";
 import cat from '../../../images/cat.jpg';
 
-function RenderFollowUser({prop}) {
+function RenderFollowUser({prop, setShowFollwerModal, setShowFollwingModal}) {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
 
     const followingList = sessionUser?.following.map(user => user.id);
 
     const [isFollowing, setIsFollowing] = useState(false);
+
+    const { userId } = useParams()
+
+    // useEffect(() => {
+    //     if (userId) {
+    //         setShowFollwerModal(false)
+
+    //     }
+    // }, [userId])
 
 
 
@@ -43,12 +53,21 @@ function RenderFollowUser({prop}) {
         return dispatch(unfollowAUser(id))
     }
 
+    const hideModal = () => {
+        if(setShowFollwingModal) {
+            setShowFollwingModal(false)
+        } else {
+
+            setShowFollwerModal(false)
+        }
+    }
+
     return (
         <>
             <div className="user-prof-pic">
                 <img className='post-profile-pic' src={cat} alt='cat' />
                 <div className="user-info">
-                    <Link to={`/users/${prop.user.id}`}>{prop.user.username}</Link>
+                    <Link onClick={hideModal} to={`/users/${prop.user.id}`}>{prop.user.username}</Link>
                     <p>{prop.user.full_name}</p>
                 </div>
             </div>
